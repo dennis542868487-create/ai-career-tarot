@@ -14,20 +14,23 @@ export default async function NewReadingPage({
   const selected = getQuestion(params.question);
 
   return (
-    <main className="min-h-screen bg-[#0c0814] px-5 py-8 text-stone-100">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#241537,_#110c1b_46%,_#09060f_100%)] px-5 py-8 text-stone-100">
       <div className="mx-auto flex w-full max-w-md flex-col">
         <Link href="/" className="mb-6 text-sm text-stone-400">
           ← Back
         </Link>
 
-        <h1 className="text-3xl font-semibold">Set up your reading</h1>
-        <p className="mt-3 text-sm leading-7 text-stone-300">
-          Add a little context so the reading feels more grounded and less generic.
-        </p>
+        <div className="rounded-[30px] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur">
+          <p className="text-xs uppercase tracking-[0.28em] text-amber-200/80">Set up your reading</p>
+          <h1 className="mt-3 text-3xl font-semibold leading-tight">Give the reading a little real context.</h1>
+          <p className="mt-3 text-sm leading-7 text-stone-300">
+            A few grounded details make the result feel more specific and less like a generic horoscope.
+          </p>
+        </div>
 
-        <form action="/reading/draw" className="mt-8 space-y-6">
+        <form action="/reading/draw" className="mt-6 space-y-5 rounded-[30px] border border-white/10 bg-black/20 p-5">
           <div>
-            <label className="mb-2 block text-sm font-medium text-stone-200">Question</label>
+            <label className="mb-2 block text-sm font-medium text-stone-200">Question focus</label>
             <select
               name="question"
               defaultValue={selected.id}
@@ -42,7 +45,7 @@ export default async function NewReadingPage({
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-stone-200">Current work situation</label>
+            <label className="mb-2 block text-sm font-medium text-stone-200">What is your situation right now?</label>
             <textarea
               name="situation"
               required
@@ -53,7 +56,7 @@ export default async function NewReadingPage({
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-stone-200">Biggest tension or concern</label>
+            <label className="mb-2 block text-sm font-medium text-stone-200">What feels tense, uncertain, or heavy?</label>
             <textarea
               name="concern"
               rows={3}
@@ -63,13 +66,17 @@ export default async function NewReadingPage({
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-stone-200">What are you hoping for?</label>
+            <label className="mb-2 block text-sm font-medium text-stone-200">What outcome are you quietly hoping for?</label>
             <textarea
               name="hope"
               rows={3}
               placeholder="Example: I want clearer direction and a low-risk next step that I can test."
               className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm leading-6 text-white placeholder:text-stone-500 outline-none"
             />
+          </div>
+
+          <div className="rounded-2xl border border-amber-200/15 bg-amber-100/10 p-4 text-xs leading-5 text-stone-300">
+            Keep it honest and simple. You do not need to write a perfect prompt, just enough for the reading to understand your situation.
           </div>
 
           <button
